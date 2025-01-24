@@ -9,11 +9,13 @@ from tinyvgg import TinyVGG
 # Initialize FastAPI app
 app = FastAPI()
 
-# Load the trained model
 # Load the full model
-model = torch.load("model_full.pth", map_location=torch.device("cpu"))
-# Set the model to evaluation mode
-model.eval()  # Set to evaluation mode
+model = TinyVGG(input_channels=3, hidden_units=10, output_shape=1)
+
+# Load the weights
+model.load_state_dict(torch.load("model_weights.pth", map_location=torch.device("cpu")))
+model.eval()
+
 
 # Define preprocessing
 preprocess = transforms.Compose([
