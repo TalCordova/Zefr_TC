@@ -10,7 +10,7 @@ from tinyvgg import TinyVGG
 app = FastAPI()
 
 # Load the full model
-model = TinyVGG(input_channels=3, hidden_units=10, output_shape=1)
+model = TinyVGG(input_channels=3, hidden_units=16, output_shape=1)
 
 # Load the weights
 model.load_state_dict(torch.load("model_weights.pth", map_location=torch.device("cpu")))

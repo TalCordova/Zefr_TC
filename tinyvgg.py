@@ -17,7 +17,7 @@ class TinyVGG(nn.Module):
                                stride=1,
                                padding=1)
         self.flatten = nn.Flatten()
-        self.linear = nn.Linear(hidden_units * 7 * 7, output_shape)
+        self.linear = nn.Linear(hidden_units * 56 * 56, output_shape)
 
     def forward(self, x):
         x = F.relu(self.conv1(x))
