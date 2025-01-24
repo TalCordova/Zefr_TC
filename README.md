@@ -56,4 +56,20 @@ For the model development, I used [this dataset](https://universe.roboflow.com/r
 
 Use the /predict/ endpoint to upload an image and get predictions.
 
+### Cloud Deployment
 
+I deployed the model using AWS simple EC2 instance.
+
+It is accesible here:
+
+* Swagger UI: http://34.228.116.129:8000/docs
+
+Using Swagger UI:
+
+1. Navigate to the link provided above.
+
+2. Explore the endpoints available on the Swagger UI.
+
+3. Use the /predict/ endpoint to upload an image file and receive predictions from the model.
+
+If there are any question - feel free to contact me.
