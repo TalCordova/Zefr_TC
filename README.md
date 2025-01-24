@@ -13,15 +13,17 @@ This is the data scientise role assignment for Zefr.
 This project demonstrates a logo detection model deployed using FastAPI. The model predicts whether a given image contains a target brand logo.
 
 ### Repository Contents
-- `App.py`: FastAPI app to serve the model.
-- `tinyvgg.py`: Model architecture (TinyVGG).
-- `model_weights.pth`: Trained model weights.
-- `requirements.txt`: Dependencies to run the app.
-- `Zefr_DS_Tal_Cordova.ipynb`: Jupyter notebook used for training the model.
+- `App.py`: The main FastAPI application.
+- `tinyvgg.py`: Contains the TinyVGG model architecture for binary classification.
+- `model_weights.pth`: Pre-trained model weights used for predictions.
+- `requirements.txt`: List of dependencies for the project.
+- `Zefr_DS_Tal_Cordova.ipynb`: Jupyter notebook for training and evaluating the model.
 
 ### Data Used
 
-For the model development, I used [this dataset](https://universe.roboflow.com/raveesh-gupta/logo-dataset-3itmd).
+For the model development, I used a publicly available dataset, that can be loaded from [here](https://universe.roboflow.com/raveesh-gupta/logo-dataset-3itmd).
+
+> Note: I downloaded it to my machine and used it for training from `.zip` file.
 
 ### Setup Instructions
 1. **Clone the Repository**:
@@ -53,14 +55,13 @@ For the model development, I used [this dataset](https://universe.roboflow.com/r
    Open your browser and navigate to:
   * Swagger UI: http://127.0.0.1:8000/docs
 
-
 Use the /predict/ endpoint to upload an image and get predictions.
 
 ### Cloud Deployment
 
 I deployed the model using AWS simple EC2 instance.
 
-It is accesible here:
+The deployed application can be accessed at:
 
 * Swagger UI: http://34.228.116.129:8000/docs
 
