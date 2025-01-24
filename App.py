@@ -24,6 +24,12 @@ preprocess = transforms.Compose([
     transforms.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5])
 ])
 
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger("api")
+
 # Root route to verify the server is working
 @app.get("/")
 def read_root():
@@ -31,6 +37,11 @@ def read_root():
 
 @app.post("/predict/")
 async def predict(file: UploadFile = File(...)):
+    # Validate file type
+    logger.info(f"Received file: {file.filename}")
+    if file.content_type not in ["image/jpeg", "image/png"]:
+        return {"error": "Invalid file type. Please upload a JPEG or PNG image."}
+
     try:
         # Load and preprocess the image
         image = Image.open(io.BytesIO(await file.read())).convert("RGB")
@@ -38,12 +49,13 @@ async def predict(file: UploadFile = File(...)):
 
         # Make prediction
         with torch.no_grad():
-            logits = model(input_tensor)  # Get raw logits from the model
-            probabilities = torch.sigmoid(logits)  # Convert logits to probabilities
-            prediction = int(probabilities.item() > 0.5)  # Threshold at 0.5
+            logits = model(input_tensor)
+            probabilities = round(torch.sigmoid(logits).item(), 4)  # Rounded probability
+            prediction = int(probabilities > 0.5)
 
-        return {"prediction": prediction, "probability": probabilities.item()}
+        return {"prediction": prediction, "probability": probabilities}
     except Exception as e:
+        logger.error(f"Error processing file {file.filename}: {str(e)}")
         return {"error": str(e)}
 
 # Run the app locally
