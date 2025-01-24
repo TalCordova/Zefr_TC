@@ -19,6 +19,10 @@ This project demonstrates a logo detection model deployed using FastAPI. The mod
 - `requirements.txt`: Dependencies to run the app.
 - `Zefr_DS_Tal_Cordova.ipynb`: Jupyter notebook used for training the model.
 
+### Data Used
+
+For the model development, I used [this dataset](https://universe.roboflow.com/raveesh-gupta/logo-dataset-3itmd).
+
 ### Setup Instructions
 1. **Clone the Repository**:
    ```bash
