@@ -28,7 +28,7 @@ For the model development, I used a publicly available dataset, that can be load
 ### Setup Instructions
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/Zefr_TC.git
+   git clone https://github.com/TalCordova/Zefr_TC.git
    cd Zefr_TC
 2. **Create and Activate a Virtual Environment**: create a virtual environment to isolate dependencies:
    ```bash
